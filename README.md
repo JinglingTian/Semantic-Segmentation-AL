@@ -1,4 +1,7 @@
 # Semantic-Segmentation-AL
+<p align="center">
+  <img src="./Al_segment.png" width="480">
+</p>
 Applied CNN for semantic segmentation of battery CT images to create 3D models of electrode material particles and extract their image features. Conducted data mining on these features to study the structural evolution of electrode material particles during battery operation.
 
 Applied FiJi software for image processing, applying threshold segmentation and watershed algorithm to obtain rough segmentation labels for building a dataset to train the segmentation model.

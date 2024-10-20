@@ -105,28 +105,3 @@ class ALTrainDataset(Dataset):
 
         edge = torch.tensor(get_sobel(mask[0].numpy())).unsqueeze(0).float()
         return img,mask,edge
-
-
-class SelectSet(Dataset):
-    def __init__(self,
-                 unlabed_path,
-                 use_clahe = False
-                 ):
-        super().__init__()
-        self.img_list = [os.path.join(unlabed_path,f) for f in os.listdir(unlabed_path)]
-        self.use_clahe = use_clahe
-
-    def __len__(self):
-        return len(self.img_list)
-
-    def __getitem__(self, index):
-        img_path = self.img_list[index]
-        img = min_max_norm(imread(img_path))
-        # 直方图均衡化
-        if self.use_clahe:
-            img = hist_clahe(img)
-        img = torch.tensor(img).unsqueeze(0).float()
-
-        return img_path,img
-
-
